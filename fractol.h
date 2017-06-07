@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 15:51:48 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/07 17:10:25 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 # define WIN_W		1024
 # define WIN_H		632
 
+# define IMG_W		(WIN_W + 10)
+# define IMG_H		(WIN_H + 10)
+
 typedef union		u_color
 {
 	int				color;
-	char			r;
-	char			g;
-	char			b;
+	char			rgba[4];
 }					t_color;
 
 typedef struct		s_xy
@@ -59,10 +60,12 @@ typedef struct		s_mlx
 	int				fractal;
 }					t_mlx;
 
-# define NB_FRACTALS	2
+# define NB_FRACTALS		2
 
-# define JULIA			0
-# define MANDELBROT		1
+# define JULIA				0
+# define MANDELBROT			1
+
+# define DEFAULT_ITER		1000
 
 /*
 ** fractals

@@ -6,17 +6,17 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:10:06 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 16:07:51 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:21:58 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void				put_pixel(t_mlx *mlx, int x, int y, int color)
+void		put_pixel(t_mlx *mlx, int x, int y, int color)
 {
 	int				i;
 
-	if (x >= WIN_W || y >= WIN_H || x < 0 || y < 0)
+	if (x >= IMG_W || y >= IMG_H || x < 0 || y < 0)
 	{
 		ft_printf("OUT OF BOUNDS x = %d, y = %d\n", x, y);
 		return ;
@@ -34,22 +34,22 @@ void		painter(t_mlx *mlx)
 	static int	(*frac[NB_FRACTALS])(t_mlx*, double, double) = \
 					{&julia, &mandelbrot};
 
-	ploty = WIN_H - 1;
+	ploty = IMG_H - 1;
 	while (ploty)
 	{
-		plotx = WIN_W - 1;
+		plotx = IMG_W - 1;
 		while (plotx)
 		{
-			ft_printf("%d, %d\n", plotx, ploty);
 			put_pixel(mlx, plotx, ploty, \
 				frac[mlx->fractal](mlx, ploty, plotx));
 			--plotx;
 		}
 		--ploty;
 	}
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img, -5, -5);
 }
 
 void		cleaner(t_mlx *mlx)
 {
-	ft_bzero(mlx->data, mlx->linesize * (WIN_H - 1) * (mlx->bpp / 8));
+	ft_bzero(mlx->data, mlx->linesize * (IMG_H - 1) * (mlx->bpp / 8));
 }

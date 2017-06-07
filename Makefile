@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/25 11:36:26 by agrumbac          #+#    #+#              #
-#    Updated: 2017/06/07 14:56:40 by agrumbac         ###   ########.fr        #
+#    Updated: 2017/06/07 16:31:08 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ fclean: clean
 	@/bin/rm -f ${NAME}
 
 test:
-	@${CC} ${INCL} -g -fsanitize=address ${LIB} -o ${NAME} \
+	@${CC} ${INCL} ${FRAMEWORKS} -g -fsanitize=address ${LIB} -o ${NAME} \
 	$(addprefix srcs/, ${SRC})
 
 debug: test
