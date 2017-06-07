@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 17:10:25 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/07 17:30:44 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct		s_view
 {
 	int				zoom;
 	int				iterations;
+	int				radius;
 	t_xy			pos;
 }					t_view;
 
@@ -66,6 +67,7 @@ typedef struct		s_mlx
 # define MANDELBROT			1
 
 # define DEFAULT_ITER		1000
+# define DEFAULT_RAD		4
 
 /*
 ** fractals

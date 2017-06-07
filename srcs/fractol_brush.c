@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:10:06 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 16:21:58 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/07 17:22:59 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		put_pixel(t_mlx *mlx, int x, int y, int color)
 {
-	int				i;
+	int			i;
 
 	if (x >= IMG_W || y >= IMG_H || x < 0 || y < 0)
 	{
@@ -29,8 +29,8 @@ void		put_pixel(t_mlx *mlx, int x, int y, int color)
 
 void		painter(t_mlx *mlx)
 {
-	int		plotx;
-	int		ploty;
+	int			plotx;
+	int			ploty;
 	static int	(*frac[NB_FRACTALS])(t_mlx*, double, double) = \
 					{&julia, &mandelbrot};
 

@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:25:12 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 17:18:20 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/07 17:27:35 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int			main(int ac, char **av)
 	mlx.view.pos.x = 100;
 	mlx.view.pos.y = 100;
 	mlx.view.iterations = DEFAULT_ITER;
+	mlx.view.radius = DEFAULT_RAD;
 	if (!(mlx.win = mlx_new_window(mlx.mlx_ptr, WIN_W, WIN_H, WIN_NAME)) ||
 		!(mlx.img = mlx_new_image(mlx.mlx_ptr, IMG_W, IMG_H)) ||
 		!(mlx.data = mlx_get_data_addr(mlx.img, &(mlx.bpp), &(mlx.linesize), \
