@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 14:49:34 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/07 15:51:48 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,18 @@ typedef union		u_color
 	char			r;
 	char			g;
 	char			b;
-}					t_color;//
+}					t_color;
 
 typedef struct		s_xy
 {
-	int				x;
-	int				y;
+	double			x;
+	double			y;
 }					t_xy;
 
 typedef struct		s_view
 {
 	int				zoom;
+	int				iterations;
 	t_xy			pos;
 }					t_view;
 
@@ -58,17 +59,17 @@ typedef struct		s_mlx
 	int				fractal;
 }					t_mlx;
 
-# define JULIA	1
-# define MENDEL	2
-# define SQUARE	3
-# define CIRCLE	4
+# define NB_FRACTALS	2
+
+# define JULIA			0
+# define MANDELBROT		1
 
 /*
 ** fractals
 */
 
-void		julia(t_mlx *mlx);
-void		mendel(t_mlx *mlx);
+int			julia(t_mlx *mlx, double y, double x);
+int			mandelbrot(t_mlx *mlx, double y, double x);
 
 /*
 ** fractol

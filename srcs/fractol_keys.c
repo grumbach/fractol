@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:12:51 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 14:38:19 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:00:57 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int				keys(int keycode, void *param)
 		mlx_destroy_window(((t_mlx *)param)->mlx_ptr, ((t_mlx *)param)->win);
 		exit(1);
 	}
-	else if (keycode == 123 || keycode == 125 ||\
+	else if (keycode == 123 || keycode == 125 || \
 		 		keycode == 126 || keycode == 124)
 		position(param, keycode);
-	else if (keycode == 18 || keycode == 19 || keycode == 20 || keycode == 21)
+	else if (keycode >= 18 && keycode < 18 + NB_FRACTALS)
 		fractal_change(param, keycode);
 	else if (keycode == 78)
 		unzoom(param);

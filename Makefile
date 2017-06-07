@@ -13,7 +13,7 @@
 NAME = fractol
 
 SRC = fractol.c fractol_keys.c fractol_brush.c fractol_mouse.c \
-	fractal_julia.c fractal_mendel.c
+	fractal_julia.c fractal_mandelbrot.c
 
 OBJDIR = objs
 

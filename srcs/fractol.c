@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:25:12 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 14:51:18 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:08:34 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ int			main(void)
 	t_mlx		mlx;
 
 	ft_bzero(&mlx, sizeof(t_mlx));
-	mlx.fractal = 1;
+	mlx.fractal = 0;
 	mlx.mlx_ptr = mlx_init();
 	mlx.view.zoom = 10;
 	mlx.view.pos.x = 100;
 	mlx.view.pos.y = 100;
+	mlx.view.iterations = 1000;
 	if (!(mlx.win = mlx_new_window(mlx.mlx_ptr, WIN_W, WIN_H, WIN_NAME)) ||
 		!(mlx.img = mlx_new_image(mlx.mlx_ptr, WIN_W, WIN_H)) ||
 		!(mlx.data = mlx_get_data_addr(mlx.img, &(mlx.bpp), &(mlx.linesize), \
