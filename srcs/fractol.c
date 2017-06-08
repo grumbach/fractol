@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:25:12 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 17:27:35 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/08 23:47:10 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int			main(int ac, char **av)
 	ft_bzero(&mlx, sizeof(t_mlx));
 	mlx.fractal = fast_parse(ac, av);
 	mlx.mlx_ptr = mlx_init();
-	mlx.view.zoom = 10;
-	mlx.view.pos.x = 100;
-	mlx.view.pos.y = 100;
+	mlx.view.pos.x = 0;
+	mlx.view.pos.y = 0;
+	mlx.view.zoom = DEFAULT_ZOOM;
 	mlx.view.iterations = DEFAULT_ITER;
 	mlx.view.radius = DEFAULT_RAD;
 	if (!(mlx.win = mlx_new_window(mlx.mlx_ptr, WIN_W, WIN_H, WIN_NAME)) ||
@@ -60,8 +60,10 @@ int			main(int ac, char **av)
 			&(mlx.endian))))
 		errors(1, 0);
 	mlx_hook(mlx.win, 2, 3, keys, &mlx);
-	mlx_mouse_hook(mlx.win, mouse, &mlx);
+	mlx_hook(mlx.win, 6, 1 << 8, mouse, &mlx);
+	mlx_mouse_hook(mlx.win, wheel, &mlx);
 	painter(&mlx);
 	mlx_loop(mlx.mlx_ptr);
+	pthread_exit(NULL);
 	return (EXIT_SUCCESS);
 }

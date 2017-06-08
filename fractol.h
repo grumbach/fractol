@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 17:30:44 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/08 23:56:00 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 #include <pthread.h>
 
+# define NB_THREADS	8
+
 # define WIN_NAME	"fractol"
 # define WIN_W		1024
 # define WIN_H		632
@@ -28,10 +30,13 @@
 # define IMG_W		(WIN_W + 10)
 # define IMG_H		(WIN_H + 10)
 
+# define CLAMPX(x)	((x / IMG_W) * 3.5 - 2.5)
+# define CLAMPY(y)	((y / WIN_H) * 2 - 1)
+
 typedef union		u_color
 {
 	int				color;
-	char			rgba[4];
+	char			bgr[3];
 }					t_color;
 
 typedef struct		s_xy
@@ -45,6 +50,7 @@ typedef struct		s_view
 	int				zoom;
 	int				iterations;
 	int				radius;
+	t_xy			base;
 	t_xy			pos;
 }					t_view;
 
@@ -59,6 +65,8 @@ typedef struct		s_mlx
 	int				linesize;
 	int				endian;
 	int				fractal;
+	int				plotstart;
+	int				plotend;
 }					t_mlx;
 
 # define NB_FRACTALS		2
@@ -66,7 +74,8 @@ typedef struct		s_mlx
 # define JULIA				0
 # define MANDELBROT			1
 
-# define DEFAULT_ITER		1000
+# define DEFAULT_ITER		50
+# define DEFAULT_ZOOM		1
 # define DEFAULT_RAD		4
 
 /*
@@ -90,7 +99,8 @@ long		errors(const int err, const char *name);
 */
 
 int			keys(int keycode, void *param);
-int			mouse(int button, int x, int y, void *param);
+int			mouse(int x, int y, void *param);
+int			wheel(int button, int x, int y, void *param);
 void		unzoom(t_mlx *mlx);
 void		zoom(t_mlx *mlx);
 

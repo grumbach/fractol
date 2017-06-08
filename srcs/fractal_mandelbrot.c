@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 14:44:52 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 17:34:09 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/08 23:13:50 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int			mandelbrot(t_mlx *mlx, double y, double x)
 	t_xy	base;
 	t_xy	tmp;
 
-	base.x = (x / IMG_W) * 3.5 - 2.5;
-	base.y = (y / IMG_H) * 2 - 1;
+	base.x = CLAMPX(x) / mlx->view.zoom + mlx->view.pos.x;
+	base.y = CLAMPY(y) / mlx->view.zoom + mlx->view.pos.y;
 	iteration = 0;
 	x = 0;
 	y = 0;
@@ -37,6 +37,6 @@ int			mandelbrot(t_mlx *mlx, double y, double x)
 		y = tmp.y;
 		++iteration;
 	}
-	color.rgba[2] = iteration * iteration * iteration;
+	color.bgr[2] = iteration * iteration * iteration;
 	return (color.color);
 }

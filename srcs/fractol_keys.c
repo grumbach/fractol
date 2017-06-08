@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:12:51 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/07 17:06:21 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/08 23:55:46 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ static void		fractal_change(t_mlx *mlx, const int keycode)
 static void		position(t_mlx *mlx, const int keycode)
 {
 	if (keycode == 126)
-		mlx->view.pos.y -= 10;
+		mlx->view.pos.y -= 0.1 / mlx->view.zoom;
 	if (keycode == 125)
-		mlx->view.pos.y += 10;
+		mlx->view.pos.y += 0.1 / mlx->view.zoom;
 	if (keycode == 123)
-		mlx->view.pos.x -= 10;
+		mlx->view.pos.x -= 0.1 / mlx->view.zoom;
 	if (keycode == 124)
-		mlx->view.pos.x += 10;
+		mlx->view.pos.x += 0.1 / mlx->view.zoom;
 }
 
 static void		iterations(t_mlx *mlx, const int keycode)
 {
-	if (keycode & 0x01)
-		mlx->view.iterations -= 10;
-	else
+	if (!(keycode & 0x01))
 		mlx->view.iterations += 10;
+	else if (mlx->view.iterations)
+		mlx->view.iterations -= 10;
 }
 
 int				keys(int keycode, void *param)
