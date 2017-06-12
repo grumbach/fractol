@@ -16,8 +16,8 @@ int			mandelbrot(t_mlx *mlx, double y, double x)
 {
 	t_color	color;
 	int		iteration;
-	t_xy	base;
-	t_xy	tmp;
+	t_ri	base;
+	t_ri	tmp;
 
 	base.x = CLAMPX(x) / mlx->view.zoom + mlx->view.pos.x;
 	base.y = CLAMPY(y) / mlx->view.zoom + mlx->view.pos.y;

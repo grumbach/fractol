@@ -16,8 +16,8 @@ int			julia(t_mlx *mlx, double y, double x)
 {
 	t_color	color;
 	int		iteration;
-	t_xy	base;
-	t_xy	tmp;
+	t_ri	base;
+	t_ri	tmp;
 
 	base.x = CLAMPX(mlx->view.base.x);
 	base.y = CLAMPY(mlx->view.base.y);

@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:12:51 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/08 23:55:46 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 16:56:33 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static void		iterations(t_mlx *mlx, const int keycode)
 int				keys(int keycode, void *param)
 {
 	ft_printf("keycode press = %d\n", keycode);
-	cleaner(param);
 	if (keycode == 53)
 	{
 		mlx_destroy_image(((t_mlx *)param)->mlx_ptr, ((t_mlx *)param)->img);

@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/08 23:56:00 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 17:11:25 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,23 @@ typedef union		u_color
 
 typedef struct		s_xy
 {
+	int				x;
+	int				y;
+}					t_xy;
+
+typedef struct		s_ri
+{
 	double			x;
 	double			y;
-}					t_xy;
+}					t_ri;
 
 typedef struct		s_view
 {
-	int				zoom;
-	int				iterations;
+	double			zoom;
+	double			iterations;
 	int				radius;
-	t_xy			base;
-	t_xy			pos;
+	t_ri			base;
+	t_ri			pos;
 }					t_view;
 
 typedef struct		s_mlx
@@ -65,8 +71,7 @@ typedef struct		s_mlx
 	int				linesize;
 	int				endian;
 	int				fractal;
-	int				plotstart;
-	int				plotend;
+	pthread_t		threads[NB_THREADS];
 }					t_mlx;
 
 # define NB_FRACTALS		2
@@ -90,7 +95,6 @@ int			mandelbrot(t_mlx *mlx, double y, double x);
 */
 
 void		painter(t_mlx *mlx);
-void		cleaner(t_mlx *mlx);
 void		put_pixel(t_mlx *mlx, int x, int y, int color);
 long		errors(const int err, const char *name);
 

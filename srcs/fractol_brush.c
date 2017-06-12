@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:10:06 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/08 23:56:59 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 17:18:48 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,49 +27,49 @@ void		put_pixel(t_mlx *mlx, int x, int y, int color)
 	mlx->data[++i] = color >> 16;
 }
 
-static void	*threadman(void *mlxx)
+static void	*threadman(void *mlx)
 {
-	t_mlx		*mlx;
-	int			plotx;
-	int			ploty;
+	t_xy		plot;
+	t_xy		start_end;
+	pthread_t	s;
 	static int	(*frac[NB_FRACTALS])(t_mlx*, double, double) = \
 					{&julia, &mandelbrot};
 
-	mlx = mlxx;
-	ploty = IMG_H - 1;
-	while (ploty)
+	start_end.x = 0;
+	s = pthread_self();
+	while (s != ((t_mlx*)mlx)->threads[start_end.x])
+		start_end.x++;
+	start_end.y = (start_end.x + 1) * IMG_W / NB_THREADS;
+	start_end.x = start_end.x * IMG_W / NB_THREADS;
+	plot.y = IMG_H - 1;
+	while (plot.y)
 	{
-		plotx = mlx->plotstart;
-		while (plotx < mlx->plotend)
+		plot.x = start_end.x;
+		while (plot.x < start_end.y)
 		{
-			put_pixel(mlx, plotx, ploty, \
-				frac[mlx->fractal](mlx, ploty, plotx));
-			++plotx;
+			put_pixel(mlx, plot.x, plot.y, \
+				frac[((t_mlx*)mlx)->fractal](mlx, plot.y, plot.x));
+			++plot.x;
 		}
-		--ploty;
+		--plot.y;
 	}
 	pthread_exit(NULL);
 }
 
 void		painter(t_mlx *mlx)
 {
-	pthread_t	threads[NB_THREADS];
 	int			rc;
 	int			i;
 
 	i = 0;
 	while (i < NB_THREADS)
 	{
-		mlx->plotstart = i * IMG_W / NB_THREADS;
-		mlx->plotend = (i + 1) * IMG_W / NB_THREADS;
-		if ((rc = pthread_create(&threads[i], NULL, threadman, mlx)))
+		if ((rc = pthread_create(&mlx->threads[i], NULL, threadman, mlx)))
 			errors(0, 0);
 		++i;
 	}
+	i = -1;
+	while (++i < NB_THREADS)
+		pthread_join(mlx->threads[i], NULL);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img, -5, -5);
-}
-
-void		cleaner(t_mlx *mlx)
-{
-	ft_bzero(mlx->data, mlx->linesize * (IMG_H - 1) * (mlx->bpp / 8));
 }
