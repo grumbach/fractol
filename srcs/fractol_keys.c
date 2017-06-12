@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:12:51 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 17:41:00 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 22:11:11 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		iterations(t_mlx *mlx, const int keycode)
 
 static void		modeset(t_mlx *mlx, const int keycode)
 {
-	if (keycode == 53)
+	if (keycode == 51)
 	{
 		mlx->view.zoom = DEFAULT_ZOOM;
 		mlx->view.iterations = DEFAULT_ITER;
@@ -66,12 +66,12 @@ int				keys(int keycode, void *param)
 	else if (keycode >= 18 && keycode < 18 + NB_FRACTALS)
 		fractal_change(param, keycode);
 	else if (keycode == 78)
-		unzoom(param);
+		unzoom(param, IMG_W / 2, IMG_H / 2);
 	else if (keycode == 69)
-		zoom(param);
+		zoom(param, IMG_W / 2, IMG_H / 2);
 	else if (keycode == 116 || keycode == 121)
 		iterations(param, keycode);
-	else if (keycode == 53 || keycode == 49)
+	else if (keycode == 51 || keycode == 49)
 		modeset(param, keycode);
 	painter(param);
 	return (0);

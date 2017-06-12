@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 17:33:17 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 18:01:59 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ long		errors(const int err, const char *name);
 
 int			keys(int keycode, void *param);
 int			mouse(int x, int y, void *param);
-int			wheel(int button, int x, int y, void *param);
-void		unzoom(t_mlx *mlx);
-void		zoom(t_mlx *mlx);
+int			wheel(int button, const int x, const int y, void *param);
+void		unzoom(t_mlx *mlx, const int x, const int y);
+void		zoom(t_mlx *mlx, const int x, const int y);
 
 #endif
