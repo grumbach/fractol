@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:13:54 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 17:03:42 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 17:43:22 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			wheel(int button, int x, int y, void *param)
 
 int			mouse(int x, int y, void *param)
 {
-	if (!((t_mlx*)param)->fractal)
+	if (!((t_mlx*)param)->fractal && ((t_mlx*)param)->mouse_follow)
 	{
 		((t_mlx*)param)->view.base.x = x;
 		((t_mlx*)param)->view.base.y = y;

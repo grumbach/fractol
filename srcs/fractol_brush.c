@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:10:06 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 17:18:48 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 17:22:44 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void		painter(t_mlx *mlx)
 	}
 	i = -1;
 	while (++i < NB_THREADS)
-		pthread_join(mlx->threads[i], NULL);
+		if (pthread_join(mlx->threads[i], NULL))
+			errors(0, 0);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img, -5, -5);
 }

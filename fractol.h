@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 17:11:25 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 17:33:17 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct		s_mlx
 	int				linesize;
 	int				endian;
 	int				fractal;
+	int				mouse_follow;
 	pthread_t		threads[NB_THREADS];
 }					t_mlx;
 

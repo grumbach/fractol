@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:12:51 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 16:56:33 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 17:41:00 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ static void		iterations(t_mlx *mlx, const int keycode)
 		mlx->view.iterations -= 10;
 }
 
+static void		modeset(t_mlx *mlx, const int keycode)
+{
+	if (keycode == 53)
+	{
+		mlx->view.zoom = DEFAULT_ZOOM;
+		mlx->view.iterations = DEFAULT_ITER;
+		mlx->view.radius = DEFAULT_RAD;
+		mlx->view.pos.x = 0;
+		mlx->view.pos.y = 0;
+	}
+	else
+		mlx->mouse_follow ^= 1;
+}
+
 int				keys(int keycode, void *param)
 {
 	ft_printf("keycode press = %d\n", keycode);
@@ -57,6 +71,8 @@ int				keys(int keycode, void *param)
 		zoom(param);
 	else if (keycode == 116 || keycode == 121)
 		iterations(param, keycode);
+	else if (keycode == 53 || keycode == 49)
+		modeset(param, keycode);
 	painter(param);
 	return (0);
 }
