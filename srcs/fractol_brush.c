@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:10:06 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 17:22:44 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/12 23:56:35 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	*threadman(void *mlx)
 	t_xy		start_end;
 	pthread_t	s;
 	static int	(*frac[NB_FRACTALS])(t_mlx*, double, double) = \
-					{&julia, &mandelbrot};
+			{&julia, &mandelbrot, &bibrot, &tribrot, &quadbrot, &burningship, &dragon, &phoenix};//more ...
 
 	start_end.x = 0;
 	s = pthread_self();
