@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:12:51 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 22:37:54 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 23:15:51 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int				keys(int keycode, void *param)
 		exit(1);
 	}
 	else if (keycode == 123 || keycode == 125 || \
-		 		keycode == 126 || keycode == 124)
+		keycode == 126 || keycode == 124)
 		position(param, keycode);
 	else if ((keycode >= 18 && keycode <= 21) ||
 		(keycode >= 83 && keycode <= 89) || keycode == 91 || keycode == 92)

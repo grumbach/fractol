@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 14:44:52 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 00:04:06 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 23:15:14 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int			bibrot(t_mlx *mlx, double y, double x)
 	iteration = 0;
 	x = 0;
 	y = 0;
-	while (x * x + y * y < 8 && iteration < mlx->view.iterations)//?
+	while (x * x + y * y < 8 && iteration < mlx->view.iterations)
 	{
 		tmp.x = x * x * x - 3 * x * y * y + base.x;
 		tmp.y = 3 * x * x * y - y * y * y + base.y;

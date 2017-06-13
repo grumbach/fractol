@@ -6,20 +6,19 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 22:06:17 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 23:18:25 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include "libft.h"
-#include "mlx.h"
+# include "libft.h"
+# include "mlx.h"
 
 # include <errno.h>
 # include <math.h>
-
-#include <pthread.h>
+# include <pthread.h>
 
 # define NB_THREADS	8
 
@@ -75,7 +74,7 @@ typedef struct		s_mlx
 	pthread_t		threads[NB_THREADS];
 }					t_mlx;
 
-# define NB_FRACTALS		9//more...
+# define NB_FRACTALS		9
 
 # define DEFAULT_ITER		50
 # define DEFAULT_ZOOM		1
@@ -84,32 +83,32 @@ typedef struct		s_mlx
 ** fractals
 */
 
-int			julia(t_mlx *mlx, double y, double x);
-int			mandelbrot(t_mlx *mlx, double y, double x);
-int			bibrot(t_mlx *mlx, double y, double x);
-int			tribrot(t_mlx *mlx, double y, double x);
-int			quadbrot(t_mlx *mlx, double y, double x);
-int			burningship(t_mlx *mlx, double y, double x);
-int			dragon(t_mlx *mlx, double y, double x);
-int			phoenix(t_mlx *mlx, double y, double x);
-int			tricorn(t_mlx *mlx, double y, double x);
+int					julia(t_mlx *mlx, double y, double x);
+int					mandelbrot(t_mlx *mlx, double y, double x);
+int					bibrot(t_mlx *mlx, double y, double x);
+int					tribrot(t_mlx *mlx, double y, double x);
+int					quadbrot(t_mlx *mlx, double y, double x);
+int					burningship(t_mlx *mlx, double y, double x);
+int					dragon(t_mlx *mlx, double y, double x);
+int					phoenix(t_mlx *mlx, double y, double x);
+int					tricorn(t_mlx *mlx, double y, double x);
 
 /*
 ** fractol
 */
 
-void		painter(t_mlx *mlx);
-void		put_pixel(t_mlx *mlx, int x, int y, int color);
-long		errors(const int err, const char *name);
+void				painter(t_mlx *mlx);
+void				put_pixel(t_mlx *mlx, int x, int y, int color);
+long				errors(const int err, const char *name);
 
 /*
 ** interract
 */
 
-int			keys(int keycode, void *param);
-int			mouse(int x, int y, void *param);
-int			wheel(int button, const int x, const int y, void *param);
-void		unzoom(t_mlx *mlx, const int x, const int y);
-void		zoom(t_mlx *mlx, const int x, const int y);
+int					keys(int keycode, void *param);
+int					mouse(int x, int y, void *param);
+int					wheel(int button, const int x, const int y, void *param);
+void				unzoom(t_mlx *mlx, const int x, const int y);
+void				zoom(t_mlx *mlx, const int x, const int y);
 
 #endif

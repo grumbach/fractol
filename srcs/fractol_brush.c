@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:10:06 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 22:59:23 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 23:16:22 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	color_set(t_mlx *mlx, const int color)
 	static int	set[4][5] = { \
 	{0x00CC00, 0xFF8000, 0xCC0000, 0xFFFF33, 0x0000CC}, \
 	{0x00CC00, 0x2211FF, 0x000099, 0x99FFFF, 0x0099FF}, \
-	{0x000000, 0xEE1100, 0xFFFFAA, 0xEE1100, 0xFF8000}, \
+	{0x000000, 0xEE1100, 0xFFFFAA, 0xAA2222, 0xFF8000}, \
 	{0x000000, 0x404040, 0x808080, 0xC0C0C0, 0xFFFFFF}};
 
 	return (set[mlx->view.colorset][color % 5]);
@@ -44,8 +44,8 @@ static void	*threadman(void *mlx)
 	t_xy		start_end;
 	pthread_t	s;
 	static int	(*frac[NB_FRACTALS])(t_mlx*, double, double) = \
-		{&julia, &mandelbrot, &bibrot, &tribrot, &quadbrot, &burningship, \
-			&dragon, &phoenix, &tricorn};//more ...
+	{&julia, &mandelbrot, &bibrot, &tribrot, &quadbrot, &burningship, \
+	&dragon, &phoenix, &tricorn};
 
 	start_end.x = 0;
 	s = pthread_self();
@@ -77,11 +77,14 @@ void		painter(t_mlx *mlx)
 	{
 		if ((rc = pthread_create(&mlx->threads[i], NULL, threadman, mlx)))
 			errors(0, 0);
-		++i;
+		i++;
 	}
-	i = -1;
-	while (++i < NB_THREADS)
+	i = 0;
+	while (i < NB_THREADS)
+	{
 		if (pthread_join(mlx->threads[i], NULL))
 			errors(0, 0);
+		i++;
+	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img, -5, -5);
 }
