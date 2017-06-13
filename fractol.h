@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 23:41:37 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 23:52:43 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int					bibrot(t_mlx *mlx, double y, double x);
 int					tribrot(t_mlx *mlx, double y, double x);
 int					quadbrot(t_mlx *mlx, double y, double x);
 int					burningship(t_mlx *mlx, double y, double x);
-int					dragon(t_mlx *mlx, double y, double x);
-int					phoenix(t_mlx *mlx, double y, double x);
+int					cosine(t_mlx *mlx, double y, double x);
+int					sine(t_mlx *mlx, double y, double x);
 int					tricorn(t_mlx *mlx, double y, double x);
 
 /*

@@ -26,7 +26,7 @@ long		errors(const int err, const char *name)
 		ft_putstr_fd("mlx failure\n", 2);
 	else if (err == 2)
 		ft_putstr_fd("\nusage: ./fractol [julia mandelbrot bibrot tribrot"
-		"quadbrot burningship dragon phoenix tricorn...]\n", 2);
+		"quadbrot burningship cosine sine tricorn...]\n", 2);
 	exit(EXIT_FAILURE);
 	return (0);
 }
@@ -36,7 +36,7 @@ static int	fast_parse(int ac, char **av)
 	int			i;
 	const char	*fractals[NB_FRACTALS] = \
 	{"julia", "mandelbrot", "bibrot", "tribrot", "quadbrot", "burningship",
-	"dragon", "phoenix", "tricorn"};
+	"cosine", "sine", "tricorn"};
 
 	if (ac == 2 && av)
 	{
