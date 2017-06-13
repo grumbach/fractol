@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:13:54 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 22:11:54 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/14 00:07:48 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void		zoom(t_mlx *mlx, const int x, const int y)
 	mlx->view.pos.x += (x - IMG_W / 2) / (double)IMG_W / mlx->view.zoom;
 	mlx->view.pos.y += (y - IMG_H / 2) / (double)IMG_H / mlx->view.zoom;
 	mlx->view.zoom *= 1.15;
+	mlx->view.iterations++;
 }
 
 void		unzoom(t_mlx *mlx, const int x, const int y)
@@ -26,6 +27,7 @@ void		unzoom(t_mlx *mlx, const int x, const int y)
 		mlx->view.pos.x -= (x - IMG_W / 2) / (double)IMG_W / mlx->view.zoom;
 		mlx->view.pos.y -= (y - IMG_H / 2) / (double)IMG_H / mlx->view.zoom;
 		mlx->view.zoom /= 1.15;
+		mlx->view.iterations--;
 	}
 }
 
