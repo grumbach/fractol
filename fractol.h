@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 19:22:17 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 22:06:17 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct		s_view
 	double			iterations;
 	t_ri			base;
 	t_ri			pos;
+	int				colorset;
 }					t_view;
 
 typedef struct		s_mlx

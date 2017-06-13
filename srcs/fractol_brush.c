@@ -6,11 +6,22 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:10:06 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 19:24:35 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 22:59:23 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static int	color_set(t_mlx *mlx, const int color)
+{
+	static int	set[4][5] = { \
+	{0x00CC00, 0xFF8000, 0xCC0000, 0xFFFF33, 0x0000CC}, \
+	{0x00CC00, 0x2211FF, 0x000099, 0x99FFFF, 0x0099FF}, \
+	{0x000000, 0xEE1100, 0xFFFFAA, 0xEE1100, 0xFF8000}, \
+	{0x000000, 0x404040, 0x808080, 0xC0C0C0, 0xFFFFFF}};
+
+	return (set[mlx->view.colorset][color % 5]);
+}
 
 void		put_pixel(t_mlx *mlx, int x, int y, int color)
 {
@@ -48,8 +59,8 @@ static void	*threadman(void *mlx)
 		plot.x = start_end.x;
 		while (plot.x < start_end.y)
 		{
-			put_pixel(mlx, plot.x, plot.y, \
-				frac[((t_mlx*)mlx)->fractal](mlx, plot.y, plot.x));
+			put_pixel(mlx, plot.x, plot.y, color_set(mlx, \
+				frac[((t_mlx*)mlx)->fractal](mlx, plot.y, plot.x)));
 			++plot.x;
 		}
 	}
