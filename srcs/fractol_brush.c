@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:10:06 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 23:56:35 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 19:24:35 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static void	*threadman(void *mlx)
 	t_xy		start_end;
 	pthread_t	s;
 	static int	(*frac[NB_FRACTALS])(t_mlx*, double, double) = \
-			{&julia, &mandelbrot, &bibrot, &tribrot, &quadbrot, &burningship, &dragon, &phoenix};//more ...
+		{&julia, &mandelbrot, &bibrot, &tribrot, &quadbrot, &burningship, \
+			&dragon, &phoenix, &tricorn};//more ...
 
 	start_end.x = 0;
 	s = pthread_self();
@@ -41,8 +42,8 @@ static void	*threadman(void *mlx)
 		start_end.x++;
 	start_end.y = (start_end.x + 1) * IMG_W / NB_THREADS;
 	start_end.x = start_end.x * IMG_W / NB_THREADS;
-	plot.y = IMG_H - 1;
-	while (plot.y)
+	plot.y = IMG_H;
+	while (--plot.y)
 	{
 		plot.x = start_end.x;
 		while (plot.x < start_end.y)
@@ -51,7 +52,6 @@ static void	*threadman(void *mlx)
 				frac[((t_mlx*)mlx)->fractal](mlx, plot.y, plot.x));
 			++plot.x;
 		}
-		--plot.y;
 	}
 	pthread_exit(NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 13:12:51 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 23:58:19 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 19:35:48 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void		fractal_change(t_mlx *mlx, const int keycode)
 {
-	mlx->fractal = keycode - 83;
+	if (keycode < 90)
+		mlx->fractal = keycode - 83;
+	else
+		mlx->fractal = keycode - 84;
 }
 
 static void		position(t_mlx *mlx, const int keycode)
@@ -62,7 +65,7 @@ int				keys(int keycode, void *param)
 	else if (keycode == 123 || keycode == 125 || \
 		 		keycode == 126 || keycode == 124)
 		position(param, keycode);
-	else if (keycode >= 83 && keycode < 83 + NB_FRACTALS)
+	else if ((keycode >= 83 && keycode <= 89) || keycode == 91 || keycode == 92)
 		fractal_change(param, keycode);
 	else if (keycode == 78)
 		unzoom(param, IMG_W / 2, IMG_H / 2);

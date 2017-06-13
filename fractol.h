@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 23:57:56 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 19:22:17 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct		s_mlx
 	pthread_t		threads[NB_THREADS];
 }					t_mlx;
 
-# define NB_FRACTALS		8//more...
+# define NB_FRACTALS		9//more...
 
 # define DEFAULT_ITER		50
 # define DEFAULT_ZOOM		1
@@ -91,6 +91,7 @@ int			quadbrot(t_mlx *mlx, double y, double x);
 int			burningship(t_mlx *mlx, double y, double x);
 int			dragon(t_mlx *mlx, double y, double x);
 int			phoenix(t_mlx *mlx, double y, double x);
+int			tricorn(t_mlx *mlx, double y, double x);
 
 /*
 ** fractol

@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:25:12 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/12 23:58:09 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 19:25:09 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ long		errors(const int err, const char *name)
 		ft_putstr_fd("mlx failure\n", 2);
 	else if (err == 2)
 		ft_putstr_fd("\nusage: ./fractol [julia mandelbrot bibrot tribrot"
-		"quadbrot burningship dragon phoenix...]\n", 2);//more...
+		"quadbrot burningship dragon phoenix tricorn...]\n", 2);//more...
 	exit(EXIT_FAILURE);
 	return (0);
 }
@@ -36,7 +36,7 @@ static int	fast_parse(int ac, char **av)
 	int			i;
 	const char	*fractals[NB_FRACTALS] = \
 		{"julia", "mandelbrot", "bibrot", "tribrot", "quadbrot", "burningship",
-		"dragon", "phoenix"};//more...
+		"dragon", "phoenix", "tricorn"};//more...
 
 	if (ac == 2 && av)
 	{
