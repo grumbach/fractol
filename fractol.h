@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 11:26:28 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 23:18:25 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 23:41:37 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@
 
 # define CLAMPX(x)	((x / IMG_W) * 3.5 - 2.5)
 # define CLAMPY(y)	((y / WIN_H) * 2 - 1)
-
-typedef union		u_color
-{
-	int				color;
-	char			bgr[3];
-}					t_color;
 
 typedef struct		s_xy
 {

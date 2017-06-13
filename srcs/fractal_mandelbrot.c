@@ -6,7 +6,7 @@
 /*   By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 14:44:52 by agrumbac          #+#    #+#             */
-/*   Updated: 2017/06/13 23:15:14 by agrumbac         ###   ########.fr       */
+/*   Updated: 2017/06/13 23:42:21 by agrumbac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int			mandelbrot(t_mlx *mlx, double y, double x)
 {
-	t_color	color;
 	int		iteration;
 	t_ri	base;
 	t_ri	tmp;
@@ -37,13 +36,11 @@ int			mandelbrot(t_mlx *mlx, double y, double x)
 		y = tmp.y;
 		++iteration;
 	}
-	color.bgr[2] = iteration * iteration * iteration;
-	return (color.color);
+	return (iteration);
 }
 
 int			bibrot(t_mlx *mlx, double y, double x)
 {
-	t_color	color;
 	int		iteration;
 	t_ri	base;
 	t_ri	tmp;
@@ -61,13 +58,11 @@ int			bibrot(t_mlx *mlx, double y, double x)
 		y = tmp.y;
 		++iteration;
 	}
-	color.bgr[2] = iteration * iteration * iteration;
-	return (color.color);
+	return (iteration);
 }
 
 int			tribrot(t_mlx *mlx, double y, double x)
 {
-	t_color	color;
 	int		iteration;
 	t_ri	base;
 	t_ri	tmp;
@@ -85,13 +80,11 @@ int			tribrot(t_mlx *mlx, double y, double x)
 		y = tmp.y;
 		++iteration;
 	}
-	color.bgr[2] = iteration * iteration * iteration;
-	return (color.color);
+	return (iteration);
 }
 
 int			quadbrot(t_mlx *mlx, double y, double x)
 {
-	t_color	color;
 	int		iteration;
 	t_ri	base;
 	t_ri	tmp;
@@ -111,6 +104,5 @@ int			quadbrot(t_mlx *mlx, double y, double x)
 		y = tmp.y;
 		++iteration;
 	}
-	color.bgr[2] = iteration * iteration * iteration;
-	return (color.color);
+	return (iteration);
 }
