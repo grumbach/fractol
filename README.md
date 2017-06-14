@@ -8,7 +8,7 @@ This project is meant to create graphically beautiful fractals...
 
 ## Installation
 
-$> git clone https://github.com/grumbach/fractol.git && cd fdf && git clone https://github.com/grumbach/libft.git && make
+$> git clone https://github.com/grumbach/fractol.git && cd fractol && git clone https://github.com/grumbach/libft.git && make
 
 ## Usage
 
